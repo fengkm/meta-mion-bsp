@@ -8,7 +8,7 @@ KBRANCH_accton-asgvolt64  ?= "v5.4/standard/base"
 KBRANCH_accton-as4610-30  ?= "v5.4/standard/base"
 
 LINUX_VERSION_accton-asgvolt64 ?= "5.4.49"
-LINUX_VERSION_accton-asg4610-30 ?= "5.4.49"
+LINUX_VERSION_accton-as4610-30 ?= "5.4.49"
 
 SRC_URI_append_accton-asgvolt64 += "file://defconfig \
             file://veth.cfg \
