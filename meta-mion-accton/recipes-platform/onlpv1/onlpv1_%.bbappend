@@ -25,7 +25,7 @@ SRC_URI_append_asgvolt64 = " \
     file://0001-i2c-use-libi2c-for-onlpdump-and-update-headers.patch \
 "
 
-SRC_URI_append_asgvolt64 = " \
+SRC_URI_append_as4610-30 = " \
     file://filter.patch \
     file://0001-i2c-bigcode-use-libi2c-for-onlpdump-and-update-headers.patch;patchdir=${SUBMODULE_BIGCODE} \
     file://0001-i2c-infra-use-libi2c-for-onlpdump-and-update-headers.patch;patchdir=${SUBMODULE_INFRA} \
@@ -39,10 +39,17 @@ EXTRA_OEMAKE_append_asgvolt64 = "\
     'ARCH=amd64'\
 "
 
-EXTRA_OEMAKE_append_as4610_30 = "\
-    'ARCH=arm'\
+EXTRA_OEMAKE_append_as4610-30 = "\
+    'ARCH=armhf'\
 "
 
+TARGET_CFLAGS_as4610-30 += "-Wno-error -Wno-error=restrict -Wno-error=format-overflow -Wno-error=cpp"
+
+do_compile_as4610-30() {
+    V=1 VERBOSE=1 oe_runmake -C packages/base/any/onlp/builds alltargets
+    V=1 VERBOSE=1 oe_runmake -C packages/base/any/onlp/builds/onlpd alltargets
+    V=1 VERBOSE=1 oe_runmake -C packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds alltargets
+}
 
 do_install_as4610-30() {
 
