@@ -80,19 +80,19 @@ do_install_as4610-30() {
     
     # /lib first
     install -d \
-        ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/bin \
-        ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/lib
+        ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/bin \
+        ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/lib
 
     # .so file
-    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds/lib/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/lib
+    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds/lib/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/lib
 
     # platform yml file
-    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/platform-config/r${ONIE_MACHINE_REV}/src/lib/${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl
+    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/platform-config/r${ONIE_MACHINE_REV}/src/lib/${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl
 
     # this is a dangerous hack
-    sed -i '/kernel-4-14/d' ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml
+    sed -i '/kernel-4-14/d' ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml
 
-    sed -i '/:kernel/d' ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml
+    sed -i '/:kernel/d' ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}-r${ONIE_MACHINE_REV}.yml
 
     # install onlpdump in bindir and link to lib/platformconf/*/onl/bin
     # Some code needs to go here to figure out if it's onlpdump or onlps. for now assume onlps.
@@ -100,7 +100,7 @@ do_install_as4610-30() {
         ${D}${libdir} 
 
     install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds/onlpdump/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/onlps ${D}${bindir}
-    ln -r -s ${D}${bindir}/onlps ${D}/lib/platform-config/${ONL_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/bin/onlps
+    ln -r -s ${D}${bindir}/onlps ${D}/lib/platform-config/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV}/onl/bin/onlps
 
     # install onlpdump.py and libs
     install -d \ 
@@ -109,7 +109,7 @@ do_install_as4610-30() {
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/pki \
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform \
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONL_VENDOR} \
-        ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONIE_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV} \
+        ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${TARGET_ARCH}_${ONL_VENDOR}_${ONL_MACHINE}_r${ONIE_MACHINE_REV} \
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onlp/onlp \
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onlp/onlplib \
         ${D}/${libdir}/python${PYTHON_MAJMIN}/onlp/sff \
@@ -188,8 +188,8 @@ do_install_as4610-30() {
     install -d ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONIE_VENDOR}/
     install -m 755 packages/platforms/${ONIE_VENDOR}/vendor-config/src/python/${ONIE_VENDOR}/__init__.py ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONIE_VENDOR}/
 
-    install -d ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONIE_ARCH}_${ONL_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/
-    install -m 755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/platform-config/r${ONIE_MACHINE_REV}/src/python/${ONIE_ARCH}_${ONL_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/__init__.py ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${ONIE_ARCH}_${ONIE_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/
+    install -d ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${TARGET_ARCH}_${ONL_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/
+    install -m 755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/platform-config/r${ONIE_MACHINE_REV}/src/python/${TARGET_ARCH}_${ONL_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/__init__.py ${D}/${libdir}/python${PYTHON_MAJMIN}/onl/platform/${TARGET_ARCH}_${ONIE_VENDOR}_${ONIE_MACHINE}_r${ONIE_MACHINE_REV}/
 
     install -m 0644 packages/base/any/onlp/src/onlp/module/inc/onlp/*.h ${D}${includedir}/onlp/
 
@@ -207,10 +207,10 @@ do_install_as4610-30() {
 
     # install libonlp-platform shared library (includes AIM.a  AIM_posix.a  BigList.a  cjson.a  cjson_util.a  IOF.a  onlplib.a  x86_64_delta_ag7648.a)
     #
-    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds/lib/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}${libdir}
-    mv ${D}${libdir}/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}${libdir}/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1
-    ln -r -s ${D}${libdir}/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1 ${D}${libdir}/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so
-    ln -r -s ${D}${libdir}/libonlp-${ONL_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1 ${D}${libdir}/libonlp-platform.so.1
+    install -m 0755 packages/platforms/${ONIE_VENDOR}/${ONL_ARCH}/as4610/${ONL_MACHINE}/onlp/builds/lib/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}${libdir}
+    mv ${D}${libdir}/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so ${D}${libdir}/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1
+    ln -r -s ${D}${libdir}/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1 ${D}${libdir}/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so
+    ln -r -s ${D}${libdir}/libonlp-${TARGET_ARCH}-${ONL_VENDOR}-${ONL_MACHINE}.so.1 ${D}${libdir}/libonlp-platform.so.1
 
     # install libonlp shared library (includes TODO)
     install -m 0755 packages/base/any/onlp/builds/onlp/BUILD/${ONL_DEBIAN_SUITE}/${TOOLCHAIN}/bin/libonlp.so ${D}${libdir}
