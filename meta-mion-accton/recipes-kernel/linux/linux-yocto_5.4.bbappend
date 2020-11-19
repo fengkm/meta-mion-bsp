@@ -16,6 +16,7 @@ SRC_URI_append_accton-asgvolt64 += "file://defconfig \
 "
 
 SRC_URI_append_accton-as4610-30 += "file://defconfig \
+            file://0001-accton_as4610_30.dts-Add-accton-dts-file.patch \
             file://veth.cfg \
             file://crypto.cfg \
 "
