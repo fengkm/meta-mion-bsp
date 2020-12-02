@@ -1,0 +1,38 @@
+From fa8c9ccebfdc132a6fa555daf152bd1e501d5ddf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Eil=C3=ADs=20N=C3=AD=20Fhlannag=C3=A1in?=
+ <pidge@toganlabs.com>
+Date: Thu, 26 Nov 2020 18:30:26 +0000
+Subject: [PATCH 15/38] driver-i2c-i801-support-intel-avoton.patch
+
+Copyright (C) 2014 david_yang <david_yang@accton.com>
+
+SPDX-License-Identifier:     GPL-2.0
+
+Add support to the i801 SMBus driver for the Intel Avoton CPU family.
+---
+ drivers/i2c/busses/i2c-i801.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/i2c/busses/i2c-i801.c b/drivers/i2c/busses/i2c-i801.c
+index 817d0258..3eaaa78b 100644
+--- a/drivers/i2c/busses/i2c-i801.c
++++ b/drivers/i2c/busses/i2c-i801.c
+@@ -149,6 +149,7 @@
+ #define PCI_DEVICE_ID_INTEL_5_3400_SERIES_SMBUS	0x3b30
+ #define PCI_DEVICE_ID_INTEL_LYNXPOINT_SMBUS	0x8c22
+ #define PCI_DEVICE_ID_INTEL_LYNXPOINT_LP_SMBUS	0x9c22
++#define PCI_DEVICE_ID_INTEL_AVOTON_SMBUS	0x1f3c
+ 
+ struct i801_priv {
+ 	struct i2c_adapter adapter;
+@@ -639,6 +640,7 @@ static const struct pci_device_id i801_ids[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_PANTHERPOINT_SMBUS) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_LYNXPOINT_SMBUS) },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_LYNXPOINT_LP_SMBUS) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_AVOTON_SMBUS) },
+ 	{ 0, }
+ };
+ 
+-- 
+2.29.2
+
