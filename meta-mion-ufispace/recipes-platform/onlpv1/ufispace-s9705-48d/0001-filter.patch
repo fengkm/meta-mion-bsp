@@ -1,0 +1,20 @@
+From 55ae58df08b22ae77d87e7aa78d80180e0811613 Mon Sep 17 00:00:00 2001
+From: fengkm <chifeng.km@gmail.com>
+Date: Wed, 24 Feb 2021 11:28:33 +0800
+Subject: [PATCH] fileter
+
+---
+ packages/platforms/ufispace/x86-64/s9705-48d/onlp/builds/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/platforms/ufispace/x86-64/s9705-48d/onlp/builds/Makefile b/packages/platforms/ufispace/x86-64/s9705-48d/onlp/builds/Makefile
+index e7437cb2..dd94fb06 100755
+--- a/packages/platforms/ufispace/x86-64/s9705-48d/onlp/builds/Makefile
++++ b/packages/platforms/ufispace/x86-64/s9705-48d/onlp/builds/Makefile
+@@ -1,2 +1,2 @@
+-FILTER=src
++FILTER=x86_64_ufispace_s9705_48d
+ include $(ONL)/make/subdirs.mk
+-- 
+2.11.0
+

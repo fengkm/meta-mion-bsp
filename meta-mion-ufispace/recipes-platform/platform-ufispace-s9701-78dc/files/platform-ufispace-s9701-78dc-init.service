@@ -1,0 +1,12 @@
+[Unit]
+Description=Setup platform s9701-78dc
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/platform-ufispace-s9701-78dc-init.sh
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=sysinit.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Setup platform s9310-32d
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/platform-ufispace-s9310-32d-init.sh
+RemainAfterExit=true
+StandardOutput=journal
+
+[Install]
+WantedBy=sysinit.target
