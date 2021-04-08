@@ -137,5 +137,5 @@ KERNEL_EXTRA_FEATURES_ufispace-s9705-48d    ?= "features/netfilter/netfilter.scc
 KERNEL_EXTRA_FEATURES_ufispace-s9710-76d    ?= "features/netfilter/netfilter.scc features/security/security.scc"
 
 
-COMPATIBLE_MACHINE = "(ufispace-s9100-32x.conf|ufispace-s9310-32d.conf|ufispace-s9501-16smt.conf|ufispace-s9501-18smt.conf|ufispace-s9501-28smt.conf|ufispace-9600-48x.conf|ufispace-s9600-64x.conf|ufispace-s9600-72xc.conf|ufispace-s9700-23d.conf|ufispace-s9700-53dx.conf|ufispace-s9701-78dc.conf|ufispace-s9705-48d.conf|ufispace-s9710-76d.conf)"
+COMPATIBLE_MACHINE = "(ufispace-s9100-32x|ufispace-s9310-32d|ufispace-s9501-16smt|ufispace-s9501-18smt|ufispace-s9501-28smt|ufispace-s9600-48x|ufispace-s9600-64x|ufispace-s9600-72xc|ufispace-s9700-23d|ufispace-s9700-53dx|ufispace-s9701-78dc|ufispace-s9705-48d|ufispace-s9710-76d)"
  
