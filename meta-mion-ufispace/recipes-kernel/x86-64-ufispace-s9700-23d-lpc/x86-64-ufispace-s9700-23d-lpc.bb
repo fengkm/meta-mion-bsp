@@ -1,6 +1,6 @@
 SUMMARY = "This module supports cpld that read and write via lpc interface"
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://COPYING;md5=1fd981d5519f34dc9b9056545aa2b87f"
+LIC_FILES_CHKSUM = "file://COPYING;md5=a17b904394914df4199c25ca3c77e0d9"
 
 inherit module
 
